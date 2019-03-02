@@ -67,6 +67,9 @@ function handleForm(event) {
     });
     // And splice from that index, one element further
     todos.splice(startIndex, 1);
+    todos.forEach( function(element, index) { // Reset the id of each element 
+			element.id = index;
+		});
     // Then we want to remove the item from the DOM
     document.querySelector('ul').removeChild(todoLi);
   });
