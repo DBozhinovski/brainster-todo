@@ -52,6 +52,24 @@ function handleForm(event) {
       newTodo.status = false;
     }
   });
+
+  // --- Exercise 6 ---
+  let todoDeleteButton = document.createElement('button');
+  todoDeleteButton.innerText = "Delete";
+
+  todoLi.appendChild(todoDeleteButton);
+
+  todoDeleteButton.addEventListener('click', function() {
+    // First, we need to remove the item from the array
+    // Find the index of the ToDo we want to delete:
+    let startIndex = todos.findIndex(function(todo) {
+      if (todo.id === id) return true;
+    });
+    // And splice from that index, one element further
+    todos.splice(startIndex, 1);
+    // Then we want to remove the item from the DOM
+    document.querySelector('ul').removeChild(todoLi);
+  });
 }
 
 // Attach the event listener
